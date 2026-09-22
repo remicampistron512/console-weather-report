@@ -12,31 +12,55 @@ api_key = "6b7792b8d65b1ed337edd22e5afd8e96"
 zipcode = "40230"
 country_code = "FR"
 
+#dictionnaire des villes
 
-# Consomme l'api pour les coordonnées
-coordinates_results = requests.get(f'http://api.openweathermap.org/geo/1.0/zip?zip={zipcode},{country_code}&appid={api_key}')
-coordinates_data = coordinates_results.json()
-print (coordinates_data)
+cities_dict = [
+      {
+        "name" : "St geours de Maremne",
+        "lat" : "",
+        "lon" : "",
+        "zip" : "40230",
+        "temp_min" : "",
+        "temp_max" : ""
+     },
+     {
+        "name" : "Toulouse",
+        "lat" :"",
+        "lon" :"",
+        "zip" : "31000",
+        "temp_min" : "",
+        "temp_max" : ""
+    },
 
-#Récuperer la latitude et la longitude
+      {
+        "name" : "Mérignac",
+        "lat": "",
+        "lon": "",
+        "zip": "33700",
+        "temp_min" : "",
+        "temp_max" : ""
+    }
+]
 
-latitude = coordinates_data["lat"]
-longitude = coordinates_data["lon"]
-# Consomme l'api pour la météo
-weather_results = requests.get(f'http://api.openweathermap.org/data/2.5/forecast?lat={latitude}&lon={longitude}&appid={api_key}')
-weather_data = weather_results.json()
-
-print(weather_data)
-
-
-
-
-# Définir les unités
+for city in cities_dict :
+    coordinates_results = requests.get(f'http://api.openweathermap.org/geo/1.0/zip?zip={city["zip"]},{country_code}&appid={api_key}')
+    coordinates_data = coordinates_results.json()
+    city["lat"] = coordinates_data["lat"]
+    city["lon"] = coordinates_data["lon"]
+    # Consomme l'api pour la météo
+    weather_results = requests.get(f'http://api.openweathermap.org/data/2.5/forecast?lat={city["lat"]}&lon={city["lon"]}&appid={api_key}&units=metric&lang=fr')
+    weather_data = weather_results.json()
+    city["temp_min"] = weather_data["list"][0]["main"]["temp_min"]
+    city["temp_max"] = weather_data["list"][0]["main"]["temp_max"]
 
 
-#Récupérer la température minimale pour les 5 jours a venir à Mérignac, Saint-Geours-de-Maremne et Toulouse
 
-#Récupérer la température maximale pour les 5 jours a venir à Mérignac, Saint-Geours-de-Maremne et Toulouse
+
+
+
+
+print(cities_dict)
+
 
 
 
