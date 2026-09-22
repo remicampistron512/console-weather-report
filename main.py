@@ -1,4 +1,5 @@
 import requests  # type: ignore
+import config
 import locale
 
 # Définit la locale et la langue pour l'affichage de la date au bon format
@@ -7,7 +8,7 @@ country_code = "FR"
 
 print("Météo")
 # Fournit la clé d'api
-api_key = "6b7792b8d65b1ed337edd22e5afd8e96"
+api_key = config.api_key
 
 # dictionnaire des villes
 
