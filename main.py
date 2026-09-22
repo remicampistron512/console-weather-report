@@ -1,18 +1,15 @@
 import requests  # type: ignore
 import locale
-from datetime import datetime
 
-# Définit la locale pour l'affichage de la date au bon format
+# Définit la locale et la langue pour l'affichage de la date au bon format
 locale.setlocale(locale.LC_TIME, "fr_FR.UTF-8")
-
-print("Météo")
-#Fournir la clé d'api
-api_key = "6b7792b8d65b1ed337edd22e5afd8e96"
-# définit les codes postaux
-zipcode = "40230"
 country_code = "FR"
 
-#dictionnaire des villes
+print("Météo")
+# Fournit la clé d'api
+api_key = "6b7792b8d65b1ed337edd22e5afd8e96"
+
+# dictionnaire des villes
 
 cities_dict = [
     {
@@ -43,6 +40,7 @@ cities_dict = [
 ]
 
 for city in cities_dict:
+    # Consomme l'api pour les coordonnées
     coordinates_results = requests.get(
         f'http://api.openweathermap.org/geo/1.0/zip?zip={city["zip"]},{country_code}&appid={api_key}')
     coordinates_data = coordinates_results.json()
