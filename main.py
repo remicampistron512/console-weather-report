@@ -20,8 +20,6 @@ cities_dict = [
         "lat": "",
         "lon": "",
         "zip": "40230",
-        "temp_min": "",
-        "temp_max": "",
         "weather": {}
     },
     {
@@ -29,8 +27,6 @@ cities_dict = [
         "lat": "",
         "lon": "",
         "zip": "31000",
-        "temp_min": "",
-        "temp_max": "",
         "weather": {}
     },
     {
@@ -38,8 +34,6 @@ cities_dict = [
         "lat": "",
         "lon": "",
         "zip": "33700",
-        "temp_min": "",
-        "temp_max": "",
         "weather": {}
     }
 ]
