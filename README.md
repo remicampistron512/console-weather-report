@@ -1,5 +1,6 @@
 # console-weather-report
-Une application météo en mode console
+Une application météo en mode console qui affiche la température minimale et la température maximale pour les 5 jours à
+venir à Mérignac, Saint-Geours-de-Maremne et Toulouse.
 
 # Installation et exécution
 
